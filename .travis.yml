@@ -25,7 +25,7 @@ script:
 after_success:
   - docker image ls
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push 0987432592345457/udagram-api-feed
-  - docker push 0987432592345457/udagram-api-user
-  - docker push 0987432592345457/udagram-frontend
-  - docker push 0987432592345457/udagram-reverseproxy
+  - docker push 0987432592345457/udagram-api-feed:latest
+  - docker push 0987432592345457/udagram-api-user:latest
+  - docker push 0987432592345457/udagram-frontend:latest
+  - docker push 0987432592345457/udagram-reverseproxy:latest
