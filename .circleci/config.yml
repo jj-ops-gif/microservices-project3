@@ -19,23 +19,27 @@ jobs:
             echo "Inside the Build and push Docker image step"
             docker --version # print the version for logging
             docker-compose -f docker-compose-build.yaml build --parallel
+            # docker build -t udagram-api-feed ./udagram-api-feed
+            # docker build -t udagram-api-feed ./udagram-api-user
+            # docker build -t udagram-api-feed ./udagram-frontend
+            # docker build -t udagram-api-feed ./udagram-reverseproxy
       - run:
           name: Tag the docker images
           command: |
             echo "Inside the Tag the docker images step"
-            docker tag udagram-api-feed 0987432592345457/udagram-api-feed:v5
-            docker tag udagram-api-user 0987432592345457/udagram-api-user:v5
-            docker tag udagram-frontend 0987432592345457/udagram-frontend:v5
-            docker tag udagram-reverseproxy 0987432592345457/udagram-reverseproxy:v4
+            docker tag udagram-api-feed 0987432592345457/udagram-api-feed
+            docker tag udagram-api-user 0987432592345457/udagram-api-user
+            docker tag udagram-frontend 0987432592345457/udagram-frontend
+            docker tag udagram-reverseproxy 0987432592345457/udagram-reverseproxy
       - run:
           name: Push Docker images
           command: |
             echo "Inside the Push Docker images step"
             echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-            docker push 0987432592345457/udagram-api-feed:v5
-            docker push 0987432592345457/udagram-api-user:v5
-            docker push 0987432592345457/udagram-frontend:v5
-            docker push 0987432592345457/udagram-reverseproxy:v4
+            docker push 0987432592345457/udagram-api-feed
+            docker push 0987432592345457/udagram-api-user
+            docker push 0987432592345457/udagram-frontend
+            docker push 0987432592345457/udagram-reverseproxy
 
 # Orchestrate jobs using workflows.
 workflows:
