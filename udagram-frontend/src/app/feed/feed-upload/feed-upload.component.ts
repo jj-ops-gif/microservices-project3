@@ -15,6 +15,7 @@ export class FeedUploadComponent implements OnInit {
   previewDataUrl;
   file: File;
   uploadForm: FormGroup;
+  disableButton = false;
 
   constructor(
     private feed: FeedProviderService,
@@ -52,6 +53,7 @@ export class FeedUploadComponent implements OnInit {
   onSubmit($event) {
     $event.preventDefault();
     this.loadingController.create();
+    this.disableButton = true;
 
     if (!this.uploadForm.valid || !this.file) { return; }
     this.feed.uploadFeedItem(this.uploadForm.controls.caption.value, this.file)

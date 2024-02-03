@@ -13,7 +13,7 @@
       <ion-button 
         color="primary" 
         type="submit"
-        [disabled]="!uploadForm.valid || !file">
+        [disabled]="!uploadForm.valid || !file || disableButton">
         Post
       </ion-button>
 </form>

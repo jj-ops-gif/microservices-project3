@@ -1,24 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: reverseproxy
+  name: frontend
   labels:
-    service: reverseproxy
+    service: frontend
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: reverseproxy
+      service: frontend
   template:
     metadata:
       labels:
-        service: reverseproxy
+        service: frontend
+        api: external
     spec:
       containers:
-      - image: 0987432592345457/reverseproxy
-        name: reverseproxy
+      - name: frontend
+        image: 0987432592345457/udagram-frontend
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         imagePullPolicy: Always  
         resources:
           requests:
