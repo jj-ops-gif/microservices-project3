@@ -43,4 +43,4 @@ venv/
 aws-secret.yaml
 env-secret.yaml
 set_env.sh
-terminal_commands_*
+terminal_commands_20240131.txt
